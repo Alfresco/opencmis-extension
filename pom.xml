@@ -20,7 +20,7 @@
     <groupId>org.alfresco.cmis.client</groupId>
     <artifactId>alfresco-opencmis-extension</artifactId>
     <name>Alfresco OpenCMIS Extension</name>
-    <version>1.0</version>
+    <version>1.1-RC1</version>
     <packaging>jar</packaging>
 
     <organization>
@@ -28,7 +28,6 @@
         <url>http://www.alfresco.com/</url>
     </organization>
 
-    <url>http://apache-extras.org/p/alfresco-opencmis-extension</url>
     <inceptionYear>2011</inceptionYear>
     <description>
         The Alfresco OpenCMIS Extension is an extension of Apache Chemistry OpenCMIS.
@@ -57,39 +56,27 @@
     </licenses>
 
     <scm>
-        <connection>scm:svn:http://svn.codespot.com/a/apache-extras.org/alfresco-opencmis-extension/trunk</connection>
-        <developerConnection>scm:svn:https://svn.codespot.com/a/apache-extras.org/alfresco-opencmis-extension/trunk</developerConnection>
-        <url>http://svn.codespot.com/a/apache-extras.org/alfresco-opencmis-extension/trunk</url>
+        <connection>scm:git:https://gitlab.alfresco.com/platform/opencmis-extension.git</connection>
+        <developerConnection>scm:git:https://gitlab.alfresco.com/platform/opencmis-extension.git</developerConnection>
+        <url>https://gitlab.alfresco.com/platform/opencmis-extension</url>
+        <tag>HEAD</tag>
     </scm>
-
-    <issueManagement>
-        <system>Google Code</system>
-        <url>http://code.google.com/a/apache-extras.org/p/alfresco-opencmis-extension/issues/list</url>
-    </issueManagement>
-
-    <mailingLists>
-        <mailingList>
-            <name>User Mailing List</name>
-            <archive>http://groups.google.com/group/alfresco-opencmis-extension</archive>
-        </mailingList>
-        <mailingList>
-            <name>Commit Mailing List</name>
-            <archive>http://groups.google.com/group/alfresco-opencmis-extension-commits</archive>
-        </mailingList>
-    </mailingLists>
 
     <distributionManagement>
         <repository>
-            <id>maven.alfresco.com</id>
-            <name>Alfresco Maven Repository</name>
-            <url>http://maven.alfresco.com/nexus/content/repositories/releases</url>
+            <id>alfresco-internal</id>
+            <url>https://artifacts.alfresco.com/nexus/content/repositories/internal-releases</url>
         </repository>
+        <snapshotRepository>
+            <id>alfresco-internal-snapshots</id>
+            <url>https://artifacts.alfresco.com/nexus/content/repositories/internal-snapshots</url>
+        </snapshotRepository>
     </distributionManagement>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compile.source>1.5</maven.compile.source>
-        <maven.compile.target>1.5</maven.compile.target>
+        <maven.compile.source>1.8</maven.compile.source>
+        <maven.compile.target>1.8</maven.compile.target>
     </properties>
 
     <build>
@@ -166,6 +153,26 @@
         </plugin>
         </plugins>
     </build>
+	
+    <profiles>
+        <profile>
+            <id>doclint-java8-max</id>
+            <activation>
+                <jdk>[1.8,)</jdk>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <configuration>
+                            <!-- <additionalparam>-Xmaxwarns 10000 -Xmaxerrs 10000</additionalparam> to detect more than 100 error -->
+                            <additionalparam>-Xdoclint:none</additionalparam>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
     <dependencies>
         <dependency>
