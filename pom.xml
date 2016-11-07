@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <!--
+        Licensed under the Apache License, Version 2.0 (the "License");
+        you may not use this file except in compliance with the License.
+        You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0 Unless required by
+        applicable law or agreed to in writing, software distributed
+        under the License is distributed on an "AS IS" BASIS, WITHOUT
+        WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        See the License for the specific language governing permissions
+        and limitations under the License.
+    -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    
+    <groupId>org.alfresco.cmis.client</groupId>
+    <artifactId>alfresco-opencmis-extension</artifactId>
+    <name>Alfresco OpenCMIS Extension</name>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+
+    <organization>
+        <name>Alfresco</name>
+        <url>http://www.alfresco.com/</url>
+    </organization>
+
+    <url>http://apache-extras.org/p/alfresco-opencmis-extension</url>
+    <inceptionYear>2011</inceptionYear>
+    <description>
+        The Alfresco OpenCMIS Extension is an extension of Apache Chemistry OpenCMIS.
+    </description>
+
+  <repositories>
+    <repository>
+        <id>apache-snapshots</id>
+        <url>https://repository.apache.org/content/groups/snapshots/</url>
+        <releases>
+            <enabled>false</enabled>
+        </releases>
+    </repository>
+    <repository>
+      <id>chemistry-opencmis</id>
+      <url>https://repository.apache.org/content/repositories/orgapachechemistry-089</url>
+    </repository>
+  </repositories>
+  
+    <licenses>
+        <license>
+            <name>Apache 2</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:svn:http://svn.codespot.com/a/apache-extras.org/alfresco-opencmis-extension/trunk</connection>
+        <developerConnection>scm:svn:https://svn.codespot.com/a/apache-extras.org/alfresco-opencmis-extension/trunk</developerConnection>
+        <url>http://svn.codespot.com/a/apache-extras.org/alfresco-opencmis-extension/trunk</url>
+    </scm>
+
+    <issueManagement>
+        <system>Google Code</system>
+        <url>http://code.google.com/a/apache-extras.org/p/alfresco-opencmis-extension/issues/list</url>
+    </issueManagement>
+
+    <mailingLists>
+        <mailingList>
+            <name>User Mailing List</name>
+            <archive>http://groups.google.com/group/alfresco-opencmis-extension</archive>
+        </mailingList>
+        <mailingList>
+            <name>Commit Mailing List</name>
+            <archive>http://groups.google.com/group/alfresco-opencmis-extension-commits</archive>
+        </mailingList>
+    </mailingLists>
+
+    <distributionManagement>
+        <repository>
+            <id>maven.alfresco.com</id>
+            <name>Alfresco Maven Repository</name>
+            <url>http://maven.alfresco.com/nexus/content/repositories/releases</url>
+        </repository>
+    </distributionManagement>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compile.source>1.5</maven.compile.source>
+        <maven.compile.target>1.5</maven.compile.target>
+    </properties>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>${basedir}</directory>
+                <includes>
+                    <include>README</include>
+                    <include>LICENSE</include>
+                </includes>
+                <targetPath>META-INF</targetPath>
+            </resource>
+        </resources>
+    
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <target>${maven.compile.target}</target>
+                    <source>${maven.compile.source}</source>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                       <id>pack</id>
+                       <goals>
+                           <goal>single</goal>
+                       </goals>
+                       <phase>package</phase>
+                       <configuration>
+                           <attach>true</attach>
+                           <descriptors>
+                               <descriptor>src/main/assembly/pack.xml</descriptor>
+                           </descriptors>
+                       </configuration>
+                   </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-eclipse-plugin</artifactId>
+                <version>2.8</version>
+                <configuration>
+                    <downloadSources>true</downloadSources>
+                    <downloadJavadocs>true</downloadJavadocs>
+                    <workspace>..</workspace>
+                </configuration>
+            </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <executions>
+                <execution>
+                    <id>attach-sources</id>
+                    <goals>
+                        <goal>jar</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <executions>
+                <execution>
+                    <id>attach-javadocs</id>
+                    <goals>
+                        <goal>jar</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.chemistry.opencmis</groupId>
+            <artifactId>chemistry-opencmis-client-impl</artifactId>
+            <version>0.11.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.chemistry.opencmis</groupId>
+            <artifactId>chemistry-opencmis-client-api</artifactId>
+            <version>0.11.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.chemistry.opencmis</groupId>
+            <artifactId>chemistry-opencmis-client-bindings</artifactId>
+            <version>0.11.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.chemistry.opencmis</groupId>
+            <artifactId>chemistry-opencmis-commons-impl</artifactId>
+            <version>0.11.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.chemistry.opencmis</groupId>
+            <artifactId>chemistry-opencmis-commons-api</artifactId>
+            <version>0.11.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.chemistry.opencmis</groupId>
+            <artifactId>chemistry-opencmis-server-support</artifactId>
+            <version>0.11.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.chemistry.opencmis</groupId>
+            <artifactId>chemistry-opencmis-server-bindings</artifactId>
+            <version>0.11.0</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-httpclient</groupId>
+            <artifactId>commons-httpclient</artifactId>
+            <version>3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit-dep</artifactId>
+            <version>4.11</version>
+        </dependency>    
+    </dependencies>
+</project>
