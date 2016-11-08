@@ -14,39 +14,20 @@
     -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
-    
     <groupId>org.alfresco.cmis.client</groupId>
     <artifactId>alfresco-opencmis-extension</artifactId>
     <name>Alfresco OpenCMIS Extension</name>
     <version>1.1-RC1</version>
     <packaging>jar</packaging>
-
-    <organization>
-        <name>Alfresco</name>
-        <url>http://www.alfresco.com/</url>
-    </organization>
-
     <inceptionYear>2011</inceptionYear>
     <description>
         The Alfresco OpenCMIS Extension is an extension of Apache Chemistry OpenCMIS.
     </description>
-
-  <repositories>
-    <repository>
-        <id>apache-snapshots</id>
-        <url>https://repository.apache.org/content/groups/snapshots/</url>
-        <releases>
-            <enabled>false</enabled>
-        </releases>
-    </repository>
-    <repository>
-      <id>chemistry-opencmis</id>
-      <url>https://repository.apache.org/content/repositories/orgapachechemistry-089</url>
-    </repository>
-  </repositories>
-  
+    <organization>
+        <name>Alfresco</name>
+        <url>http://www.alfresco.com/</url>
+    </organization>
     <licenses>
         <license>
             <name>Apache 2</name>
@@ -62,6 +43,12 @@
         <tag>HEAD</tag>
     </scm>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compile.source>1.8</maven.compile.source>
+        <maven.compile.target>1.8</maven.compile.target>
+    </properties>
+
     <distributionManagement>
         <repository>
             <id>alfresco-internal</id>
@@ -72,12 +59,6 @@
             <url>https://artifacts.alfresco.com/nexus/content/repositories/internal-snapshots</url>
         </snapshotRepository>
     </distributionManagement>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compile.source>1.8</maven.compile.source>
-        <maven.compile.target>1.8</maven.compile.target>
-    </properties>
 
     <build>
         <resources>
@@ -152,6 +133,18 @@
             </executions>
         </plugin>
         </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>2.5.3</version>
+                    <configuration>
+                        <autoVersionSubmodules>true</autoVersionSubmodules>
+                        <tagNameFormat>@{project.version}</tagNameFormat>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 	
     <profiles>
