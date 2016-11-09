@@ -4,7 +4,7 @@ Alfresco OpenCMIS Extension
 The Alfresco OpenCMIS Extension provides easy access to Alfresco aspects and 
 aspect properties. 
 
-Project page: <http://apache-extras.org/p/alfresco-opencmis-extension>
+Project page: <https://gitlab.alfresco.com/platform/opencmis-extension>
 
 
 Using the Alfresco OpenCMIS Extension
@@ -27,7 +27,7 @@ Code sample:
 
   // connection settings
   parameter.put(SessionParameter.ATOMPUB_URL, 
-       "http://localhost:8080/alfresco/service/cmis");
+       "http://localhost:8080/alfresco/api/-default-/cmis/versions/1.0/atom");
   parameter.put(SessionParameter.BINDING_TYPE, BindingType.ATOMPUB.value());
 
   // set the object factory
@@ -137,4 +137,4 @@ License
 Apache License, Version 2.0
 Please see <http://www.apache.org/licenses/LICENSE-2.0>.
 
-Copyright (C) 2005-2011 Alfresco Software Limited.
+Copyright (C) 2005-2016 Alfresco Software Limited.
