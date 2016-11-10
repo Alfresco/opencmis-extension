@@ -65,7 +65,7 @@
             <resource>
                 <directory>${basedir}</directory>
                 <includes>
-                    <include>README</include>
+                    <include>README.md</include>
                     <include>LICENSE</include>
                 </includes>
                 <targetPath>META-INF</targetPath>
