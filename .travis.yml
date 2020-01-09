@@ -15,6 +15,7 @@ branches:
   only:
     - master
     - /support\/.*/
+    - fix/REPO-4322_implement-best-practices
 
 stages:
   - test
