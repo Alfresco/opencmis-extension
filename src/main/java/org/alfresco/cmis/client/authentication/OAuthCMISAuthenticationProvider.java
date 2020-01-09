@@ -40,7 +40,7 @@ import org.w3c.dom.Element;
  * org.apache.chemistry.opencmis.binding.atompub.url=https://api.alfresco.com/cmis/versions/1.0/atom
  * org.apache.chemistry.opencmis.binding.auth.classname=org.alfresco.cmis.client.authentication.OAuthCMISAuthenticationProvider
  * org.apache.chemistry.opencmis.binding.auth.http.basic=false
- * org.apache.chemistry.opencmis.binding.auth.oauth.accessToken=<access token>
+ * org.apache.chemistry.opencmis.binding.auth.oauth.accessToken=&lt;access token&gt;
  * org.apache.chemistry.opencmis.binding.compression=true
  *
  * @author steveglover
@@ -90,7 +90,7 @@ public class OAuthCMISAuthenticationProvider extends AbstractAuthenticationProvi
     /**
      * Authenticates with the Alfresco CMIS Public Api with a previously-generated access token (no refresh token support).
      * 
-     * @param accessToken
+     * @param accessToken The access token
      */
     public OAuthCMISAuthenticationProvider(String accessToken)
     {
@@ -101,7 +101,12 @@ public class OAuthCMISAuthenticationProvider extends AbstractAuthenticationProvi
      * Authenticates with the Alfresco CMIS Public Api by generating an access token to communicate with the public api.
      * Refresh support is provided.
      * 
-     * @param accessToken
+     * @param clientId Client ID
+     * @param clientSecret secret
+     * @param redirectUrl redirect URL
+     * @param accessTokenUrl access token URL
+     * @param refreshTokenUrl refresh token URL
+     * @param authCode Authcode
      */
     public OAuthCMISAuthenticationProvider(String clientId, String clientSecret, String redirectUrl, String accessTokenUrl, String refreshTokenUrl, String authCode)
     {
@@ -354,6 +359,8 @@ public class OAuthCMISAuthenticationProvider extends AbstractAuthenticationProvi
     /**
      * Returns the HTTP headers that are sent with all requests. The returned
      * map is mutable but not synchronized!
+     * 
+     * @return fixedHeaders
      */
     protected Map<String, List<String>> getFixedHeaders() {
         return fixedHeaders;
@@ -362,6 +369,10 @@ public class OAuthCMISAuthenticationProvider extends AbstractAuthenticationProvi
     /**
      * Creates a basic authentication header value from a username and a
      * password.
+     * 
+     * @param username username
+     * @param password password
+     * @return List&lt;String&gt;
      */
     protected List<String> createBasicAuthHeaderValue(String username, String password) {
         if (password == null) {
@@ -380,6 +391,9 @@ public class OAuthCMISAuthenticationProvider extends AbstractAuthenticationProvi
     /**
      * Returns <code>true</code> if the given parameter exists in the session
      * and is set to true, <code>false</code> otherwise.
+     * 
+     * @param parameterName Parameter name
+     * @return True/False 
      */
     protected boolean isTrue(String parameterName) {
         Object value = getSession().get(parameterName);

@@ -23,6 +23,7 @@ public interface AlfrescoObjectType extends ObjectType
 {
     /**
      * Returns the aspects that are assigned to the object this type belongs to.
+     * @return Collection&lt;ObjectType&gt;
      */
     Collection<ObjectType> getAspects();
 }

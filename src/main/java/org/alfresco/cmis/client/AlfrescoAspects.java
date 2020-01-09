@@ -149,7 +149,7 @@ public interface AlfrescoAspects {
 	/**
 	 * Removes one or more aspects from the object.
 	 * 
-	 * @param id
+	 * @param type
 	 *            the aspect type or types
 	 * @return the changed object (which may be a new object)
 	 */

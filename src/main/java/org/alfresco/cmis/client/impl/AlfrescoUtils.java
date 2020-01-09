@@ -66,6 +66,9 @@ public class AlfrescoUtils
 
     /**
      * Finds the Alfresco extensions within the given extensions.
+     * 
+     * @param extensions List of extensions (List&lt;CmisExtensionElement&gt;)
+     * @return The Alfresco extensions
      */
     public static List<CmisExtensionElement> findAlfrescoExtensions(List<CmisExtensionElement> extensions)
     {
@@ -87,6 +90,11 @@ public class AlfrescoUtils
 
     /**
      * Returns the aspect types from the Alfresco extensions.
+     * 
+     * @param session session
+     * @param alfrescoExtensions List of Alfesco extensions
+     * 
+     * @return A collection of <code>aspectTypes</code>
      */
     public static Collection<ObjectType> getAspectTypes(Session session, List<CmisExtensionElement> alfrescoExtensions)
     {
@@ -106,6 +114,10 @@ public class AlfrescoUtils
 
     /**
      * Finds the aspect type that contains the given property id.
+     * 
+     * @param aspectTypes The aspects to search
+     * @param propertyId The desired property ID of the aspect.
+     * @return The <code>ObjectType</code> of the aspect if found, otherwise returns <code>null</code>
      */
     public static ObjectType findAspect(Collection<ObjectType> aspectTypes, String propertyId)
     {
@@ -128,6 +140,9 @@ public class AlfrescoUtils
 
     /**
      * Creates a setAspects extension element.
+     * 
+     * @param setAspectsChildren children
+     * @return setAspects extension element
      */
     public static CmisExtensionElement createSetAspectsExtension(List<CmisExtensionElement> setAspectsChildren)
     {
@@ -136,6 +151,9 @@ public class AlfrescoUtils
 
     /**
      * Creates an aspectsToAdd extension element.
+     * 
+     * @param aspectType aspect type
+     * @return new aspectsToAdd extension element
      */
     public static CmisExtensionElement createAspectsToAddExtension(ObjectType aspectType)
     {
@@ -144,6 +162,9 @@ public class AlfrescoUtils
 
     /**
      * Creates an aspectsToRemove extension element.
+     * 
+     * @param aspectType aspect type
+     * @return new aspectsToRemove extension element
      */
     public static CmisExtensionElement createAspectsToRemoveExtension(ObjectType aspectType)
     {
@@ -152,6 +173,9 @@ public class AlfrescoUtils
 
     /**
      * Creates an aspectsToAdd extension element.
+     * 
+     * @param propertiesChildren children
+     * @return new aspectsToAdd extension element
      */
     public static CmisExtensionElement createAspectPropertiesExtension(List<CmisExtensionElement> propertiesChildren)
     {
@@ -160,13 +184,18 @@ public class AlfrescoUtils
 
     /**
      * Creates a property extension element.
+     * 
+     * @param propertyDefinition propertyDefinition
+     * @param value value
+     * 
+     * @return new property extension element
      */
     @SuppressWarnings("rawtypes")
-    public static CmisExtensionElement createAspectPropertyExtension(PropertyDefinition<?> propertyDefintion,
+    public static CmisExtensionElement createAspectPropertyExtension(PropertyDefinition<?> propertyDefinition,
             Object value)
     {
         String name;
-        switch (propertyDefintion.getPropertyType())
+        switch (propertyDefinition.getPropertyType())
         {
         case BOOLEAN:
             name = "propertyBoolean";
@@ -194,7 +223,7 @@ public class AlfrescoUtils
         }
 
         Map<String, String> attributes = new HashMap<String, String>();
-        attributes.put("propertyDefinitionId", propertyDefintion.getId());
+        attributes.put("propertyDefinitionId", propertyDefinition.getId());
 
         List<CmisExtensionElement> propertyValues = new ArrayList<CmisExtensionElement>();
         if (value != null)
@@ -249,6 +278,12 @@ public class AlfrescoUtils
 
     /**
      * Checks a property value.
+     * 
+     * @param <T> Todo: provide definition
+     * @param propertyDefinition propertyDefinition
+     * @param value value
+     * 
+     * @return List
      */
     @SuppressWarnings("unchecked")
     public static <T> List<T> checkProperty(PropertyDefinition<T> propertyDefinition, Object value)
@@ -333,6 +368,12 @@ public class AlfrescoUtils
 
     /**
      * Adds object type and aspect types to properties.
+     * 
+     * @param properties Properites to be added to
+     * @param type the object tyoe
+     * @param aspectTypes collection of aspect types 
+     * 
+     * @return The properties list with the new object and aspect types
      */
     public static Map<String, ?> preparePropertiesForUpdate(Map<String, ?> properties, ObjectType type,
             Collection<ObjectType> aspectTypes)
@@ -361,6 +402,14 @@ public class AlfrescoUtils
 
     /**
      * Adds and removes aspects.
+     * 
+     * @param session session
+     * @param object object
+     * @param addAspectIds The aspect IDs to add
+     * @param removeAspectIds The aspect IDs to remove
+     * @param properties properties
+     * 
+     * @return Object ID
      */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static String updateAspects(Session session, CmisObject object, ObjectType[] addAspectIds,
