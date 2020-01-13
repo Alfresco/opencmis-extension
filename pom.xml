@@ -48,7 +48,7 @@
         <maven.compile.source>11</maven.compile.source>
         <maven.compile.target>11</maven.compile.target>
 
-        <dependency.cxf.version>3.0.11</dependency.cxf.version>
+        <dependency.cxf.version>3.1.16</dependency.cxf.version>
     </properties>
 
     <distributionManagement>
@@ -187,11 +187,23 @@
             <artifactId>chemistry-opencmis-server-bindings</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <!-- org.apache.cxf -->
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-transports-http</artifactId>
             <version>${dependency.cxf.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>${dependency.cxf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-ws-policy</artifactId>
+            <version>${dependency.cxf.version}</version>
+        </dependency>
+        <!-- END org.apache.cxf -->
         <dependency>
             <groupId>commons-httpclient</groupId>
             <artifactId>commons-httpclient</artifactId>
