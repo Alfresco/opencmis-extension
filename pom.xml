@@ -47,6 +47,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compile.source>11</maven.compile.source>
         <maven.compile.target>11</maven.compile.target>
+
+        <dependency.cxf.version>3.0.11</dependency.cxf.version>
     </properties>
 
     <distributionManagement>
@@ -184,6 +186,11 @@
             <groupId>org.apache.chemistry.opencmis</groupId>
             <artifactId>chemistry-opencmis-server-bindings</artifactId>
             <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+            <version>${dependency.cxf.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-httpclient</groupId>
