@@ -40,7 +40,7 @@ jobs:
       script: travis_wait 40 mvn --batch-mode -U clean org.jacoco:jacoco-maven-plugin:prepare-agent install
     - stage: release
       name: "Push to Nexus"
-      if: fork = false AND (branch = master OR branch =~ /support\/.*/) AND type != pull_request AND commit_message !~ /\[no-release\]/
+      if: fork = false AND (branch = fix/REPO-4322_implement-best-practices) AND type != pull_request AND commit_message !~ /\[no-release\]/
       before_install:
       script:
         # Use full history for release
