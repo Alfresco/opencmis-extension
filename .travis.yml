@@ -18,7 +18,7 @@ branches:
 
 stages:
   - test
-  #- release
+  - release
 
 install:
   - "cp .travis.settings.xml $HOME/.m2/settings.xml"
