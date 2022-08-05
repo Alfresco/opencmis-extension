@@ -26,7 +26,6 @@ install:
 
 jobs:
   include:
-    - stage: test
     - name: "Default Job"
       script: travis_wait 40 mvn --batch-mode -U clean org.jacoco:jacoco-maven-plugin:prepare-agent install
     - stage: release
