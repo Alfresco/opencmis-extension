@@ -45,8 +45,12 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compile.source>11</maven.compile.source>
-        <maven.compile.target>11</maven.compile.target>
+
+        <java.version>17</java.version>
+        <maven.build.sourceVersion>${java.version}</maven.build.sourceVersion>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.release>${java.version}</maven.compiler.release>
 
         <dependency.cxf.version>3.1.16</dependency.cxf.version>
     </properties>
@@ -78,8 +82,8 @@
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <target>${maven.compile.target}</target>
-                    <source>${maven.compile.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <source>${maven.compiler.source}</source>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
